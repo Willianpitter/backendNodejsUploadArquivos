@@ -10,13 +10,17 @@ io.on('connection', socket => {
   socket.on('connectRoom', box => {
     socket.join(box);
   })
-  console.log("ok");
 })
 mongoose.connect('mongodb+srv://willianpiterh:12312300@cluster0-jwfgd.mongodb.net/test?retryWrites=true&w=majority',
 {
   useNewUrlParser:true 
 }, 
 );
+
+app.use((req,res, next) =>{
+  req.io = io;
+  return next();
+})
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use('/files', express.static(path.resolve(__dirname,'..','temp')))
