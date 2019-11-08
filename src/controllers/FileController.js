@@ -12,13 +12,9 @@ class FileController{
 
   box.files.push(file)
 
-  console.log("antes do await")
-  await box.save()
-  console.log("depois do await")
-
-
-  //req.io.sockets.in(bpx._id).emit("file",file);
-  return res.json(file)
+  await box.save();
+  req.io.sockets.in(bpx._id).emit("file",file);
+  return res.json("Ok");
 
  }
 
