@@ -9,11 +9,13 @@ class FileController{
     const file = File.create({title: req.file.originalname,
     path: req.file.key
   })
+
+  box.files.push(file)
+
   console.log("antes do await")
   await box.save()
   console.log("depois do await")
 
-  box.files.push(file)
 
   //req.io.sockets.in(bpx._id).emit("file",file);
   return res.json(file)
