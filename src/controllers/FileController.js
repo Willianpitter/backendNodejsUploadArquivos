@@ -12,8 +12,8 @@ class FileController{
   
   box.files.push(file)
   
-  return res.json("Ok");
   await box.save();
+  return res.json("Ok3");
   req.io.sockets.in(bpx._id).emit("file",file);
 
  }
