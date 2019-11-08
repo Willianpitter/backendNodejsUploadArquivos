@@ -9,6 +9,9 @@ class FileController{
     const file = File.create({title: req.file.originalname,
     path: req.file.key
   })
+  console.log("antes do await")
+  await box.save()
+  console.log("depois do await")
 
   box.files.push(file)
 

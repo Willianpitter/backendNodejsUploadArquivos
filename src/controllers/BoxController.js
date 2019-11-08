@@ -6,7 +6,7 @@ class BoxController{
    return res.json(box); 
  }
 
- async shwo(req,res){
+ async show(req,res){
    const box = await Box.findById(req.params.id).populate({
      path: 'files',
      options: {sort: { creatAt: -1}}
